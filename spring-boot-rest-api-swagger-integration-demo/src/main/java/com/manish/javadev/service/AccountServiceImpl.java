@@ -1,5 +1,7 @@
 package com.manish.javadev.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -58,7 +60,17 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	private AccountEntity papulateAccountEntity(AccountEntity sourceEntity, AccountEntity targetEntity) {
+		targetEntity.setAccountHolderName(sourceEntity.getAccountHolderName());
 		return targetEntity;
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, readOnly = false, timeout = 100, rollbackFor = Exception.class)
+	public List<AccountEntity> findAllAccounts() {
+		return (List<AccountEntity>) accountRepository.findAll();
+	}
+
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, readOnly = false, timeout = 100, rollbackFor = Exception.class)
+	public void deleteAccount(Long accountNumber) {
+		accountRepository.delete(accountNumber);
+	}
 }
