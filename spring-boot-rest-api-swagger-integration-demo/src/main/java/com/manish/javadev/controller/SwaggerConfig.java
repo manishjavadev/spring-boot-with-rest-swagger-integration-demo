@@ -23,7 +23,8 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo metaData() {
-		Contact contact = new Contact("M.D Srivastava", "http://manishjavadev.com/home.html", "manishjavadev");
+		Contact contact = new Contact("M.D Srivastava", "http://manishjavadev.com/home.html",
+				"m.d.srivastava@accenture.com");
 		ApiInfo apiInfo = new ApiInfo("Enjoy Paperless, Branchless Banking Solution with digibank by DBS",
 				"Paperless Bank API, for Online Bank", "1.0", "Terms of service", contact, "Apache License Version 2.0",
 				"https://www.apache.org/licenses/LICENSE-2.0");
