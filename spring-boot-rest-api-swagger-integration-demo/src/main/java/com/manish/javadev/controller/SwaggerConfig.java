@@ -16,17 +16,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	@Bean
-	public Docket accountApi() {
+	public Docket restApiDocument() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.manish.javadev.controller")).paths(regex("/api.*"))
 				.build().apiInfo(metaData());
 	}
 
 	private ApiInfo metaData() {
-		ApiInfo apiInfo = new ApiInfo("Spring Boot REST API", "Spring Boot REST API for Online Bank", "1.0",
-				"Terms of service",
-				new Contact("M.D Srivastava", "http://manishjavadev.com/home.html", "manishjavadev"),
-				"Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
+		Contact contact = new Contact("M.D Srivastava", "http://manishjavadev.com/home.html", "manishjavadev");
+		ApiInfo apiInfo = new ApiInfo("Enjoy Paperless, Branchless Banking Solution with digibank by DBS",
+				"Paperless Bank API, for Online Bank", "1.0", "Terms of service", contact, "Apache License Version 2.0",
+				"https://www.apache.org/licenses/LICENSE-2.0");
 		return apiInfo;
 	}
 }
