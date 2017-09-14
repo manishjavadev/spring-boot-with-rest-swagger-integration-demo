@@ -46,10 +46,11 @@ public class AccountController {
 		return new ResponseEntity<AccountEntity>(accountEntity, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/account", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<AccountEntity> updateAccount(@RequestBody AccountEntity accountEntity) {
-		accountEntity = accountService.createAccount(accountEntity);
+	@RequestMapping(value = "/account/{accountNumber}", method = RequestMethod.PUT, produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<AccountEntity> updateAccount(@PathVariable("accountNumber") Long accountNumber,
+			@RequestBody AccountEntity accountEntity) {
+		accountEntity = accountService.updateAccount(accountNumber,accountEntity);
 		return new ResponseEntity<AccountEntity>(accountEntity, HttpStatus.CREATED);
 	}
 

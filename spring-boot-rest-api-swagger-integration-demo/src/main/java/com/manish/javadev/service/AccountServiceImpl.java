@@ -50,4 +50,15 @@ public class AccountServiceImpl implements AccountService {
 		return accountDao.findOne(accountNumber);
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, readOnly = false, timeout = 100, rollbackFor = Exception.class)
+	public AccountEntity updateAccount(Long accountNumber, AccountEntity sourceEntity) {
+		AccountEntity targetEntity = accountDao.findOne(accountNumber);
+		targetEntity = papulateAccountEntity(sourceEntity, targetEntity);
+		return accountDao.save(targetEntity);
+	}
+
+	private AccountEntity papulateAccountEntity(AccountEntity sourceEntity, AccountEntity targetEntity) {
+		return targetEntity;
+	}
+
 }

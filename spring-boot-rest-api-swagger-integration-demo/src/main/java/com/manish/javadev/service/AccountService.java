@@ -14,4 +14,6 @@ public interface AccountService {
 	public AccountEntity depositAmount(Long accountNumber, Double amount);
 
 	void fundTransfer(Long accountFrom, Long accountTo, Double amount);
+
+	AccountEntity updateAccount(Long accountNumber, AccountEntity accountEntity);
 }
